@@ -13,6 +13,12 @@ class User < ApplicationRecord
 
   def posts_count
     # TODO: 請完成我
+    count = 0
+
+    count += self.messages.size if self.messages
+    count += self.comments.size if self.comments
+
+    return count
   end
 
   def words_count
