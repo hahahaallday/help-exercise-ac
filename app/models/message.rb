@@ -12,7 +12,5 @@ class Message < ApplicationRecord
   scope :completed, -> { where(:status => "completed") }
   scope :within_days, ->(date) { where(["created_at >= ?", Time.now - date ]) }
 
-  scope :path => '/api/v1/', :module => "api_v1", :as => 'v1', :defaults => { :format => :json } do
-  	resources :topics
-	end
+  
 end
