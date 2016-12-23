@@ -8,7 +8,7 @@ class Message < ApplicationRecord
   has_many :liked_users, :through => :likes, :source => "user"
 
   has_many :subscribes
-  has_many :subscribed_users, :through => :subscribes, :class_name => "subscribe"
+  has_many :subscribed_users, :through => :subscribes, :source => "user"
   
   def last_comment_summary
     self.comments.last.try(:content).try(:truncate, 20)

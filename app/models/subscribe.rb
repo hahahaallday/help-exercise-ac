@@ -1,4 +1,4 @@
 class Subscribe < ApplicationRecord
 	belongs_to :user
-	belongs_to :messages
+	belongs_to :message
 end
