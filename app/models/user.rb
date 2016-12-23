@@ -4,8 +4,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :messages
-  has_many :comments
+  has_many :messages ,:dependent => :destroy
+  has_many :comments ,:dependent => :destroy
+
+  has_many :likes, :dependent => :destroy
+  has_many :liked_messages, :through => :likes, :source => :message  
+
+  has_many :subscribes, :dependent => :destroy
+  has_many :subscribed_messages, :through => :subscribes, :source => :message        
 
   def display_name
     self.email.split("@").first
